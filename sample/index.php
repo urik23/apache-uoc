@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Hello world!</title>
+	<title>Test UOC PFC</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 	<style>
 	body {
@@ -19,37 +19,35 @@
 	<img id="logo" src="logo.png" />
 	<h1><?php echo "Test ".($_ENV["NAME"]?$_ENV["NAME"]:"PFC UOC")."!"; ?></h1>
 	<?php if($_ENV["HOSTNAME"]) {?><h3>Servidor: <?php echo $_ENV["HOSTNAME"]; ?></h3><?php } ?>
-	<?php if($_ENV["CONTAINERNAME"]) {?><h3>Nom: <?php echo $_ENV["CONTAINERNAME"]; ?></h3><?php } ?>
-	<?php
-	$links = [];
-	foreach($_ENV as $key => $value) {
-		if(preg_match("/^(.*)_PORT_([0-9]*)_(TCP|UDP)$/", $key, $matches)) {
-			$links[] = [
-				"name" => $matches[1],
-				"port" => $matches[2],
-				"proto" => $matches[3],
-				"value" => $value
-			];
-		}
-	}
-	if($links) {
-	?>
-		<h3>Links found</h3>
-		<?php
-		foreach($links as $link) {
-			?>
-			<b><?php echo $link["name"]; ?></b> listening in <?php echo $link["port"] . "/" . $link["proto"]; ?> available at <?php echo $link["value"]; ?><br />
-			<?php
-		}
-		?>
-	<?php
-	}
+<?php
+# Comentarios.
+# Ejemplo de programacion en PHP simple
+# Haciendo simples calculos entre variables predefinidas
+# Por EjemploDe.Com
 
-	if($_ENV["TUTUM_AUTH"]) {
-		?>
-		<h3>I have Tutum API powers!</h3>
-		<?php
-	}
-	?>
+$PrimerValor = 10; //Comentario: Edita el numero para cambiar el primer valor
+$SegundoValor = 30; //Comentario: Edita el numero para cambiar el segundo valor
+
+//Seccion de calculos
+$suma = $PrimerValor + $SegundoValor; //Sumamos
+$resta = $PrimerValor - $SegundoValor; //Restamos
+$multiplicacion = $PrimerValor * $SegundoValor; //Multiplicamos
+$division = $PrimerValor / $SegundoValor; //Dividimos
+
+//A continuacion mostramos las cuentas en un formato textual
+
+echo "<h1>Formato Textual</h1>";
+echo "La <strong>suma</strong> entre <strong>".$PrimerValor."</strong> y <strong>".$SegundoValor."</strong> es de <strong>".$suma."</strong><br/>";
+echo "La <strong>resta</strong> entre <strong>".$PrimerValor."</strong> y <strong>".$SegundoValor."</strong> es de <strong>".$resta."</strong><br/>";
+echo "La <strong>multiplicacion</strong> entre <strong>".$PrimerValor."</strong> y <strong>".$SegundoValor."</strong> es de <strong>".$multiplicacion."</strong><br/>";
+echo "La <strong>division</strong> entre <strong>".$PrimerValor."</strong> y <strong>".$SegundoValor."</strong> es de <strong>".$division."</strong><br/>"; //A continuacion mostramos las cuentas en un formato matematico
+
+echo "<h1>Formato Matematico</h1>";
+echo "".$PrimerValor." + ".$SegundoValor." = <strong>".$suma."</strong><br/>";
+echo "".$PrimerValor." - ".$SegundoValor." = <strong>".$resta."</strong><br/>";
+echo "".$PrimerValor." * ".$SegundoValor." = <strong>".$multiplicacion."</strong><br/>";
+echo "".$PrimerValor." / ".$SegundoValor." = <strong>".$division."</strong><br/>";
+?>
+
 </body>
 </html>
